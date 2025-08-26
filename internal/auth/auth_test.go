@@ -16,13 +16,13 @@ func TestGetAPIKey(t *testing.T) {
 			name: "Valid api key",
 			header: http.Header{"Authorization": []string{"ApiKey randomApiKey"}},
 			output: "randomApiKey",
-			expectErr: true, // supposed to be false
+			expectErr: false,
 		},
 		{
 			name: "invalid prefix",
 			header: http.Header{"Authorization": []string{"auth lsajdf9f7sd;k"}},
 			output: "lsajdf9f7sd;k",
-			expectErr: false, // supposed to be true
+			expectErr: true,
 		},
 		{
 			name: "valid api key 2",
