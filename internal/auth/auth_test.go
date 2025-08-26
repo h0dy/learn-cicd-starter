@@ -5,12 +5,13 @@ import (
 	"testing"
 )
 
-func TestGetAPIKey(t *testing.T)    {
+func TestGetAPIKey(t *testing.T) {
 	cases := []struct {
 		name      string
 		header    http.Header
 		output    string
-		expectErr bool}{
+		expectErr bool
+	}{
 		{
 			name:      "Valid api key",
 			header:    http.Header{"Authorization": []string{"ApiKey randomApiKey"}},
@@ -44,14 +45,9 @@ func TestGetAPIKey(t *testing.T)    {
 	}
 
 	for _, c := range cases {
-		t.Run(c.name, func(t *testing.T)                {
+		t.Run(c.name, func(t *testing.T) {
 			got, err := GetAPIKey(c.header)
-			
-			
-			
-			
-			
-			
+
 			if err != nil {
 				if !c.expectErr {
 					t.Errorf("unexpected error: %v\n", err)
@@ -61,8 +57,7 @@ func TestGetAPIKey(t *testing.T)    {
 
 			if c.expectErr {
 				t.Error("expected error but got none case")
-				
-				
+
 				return
 			}
 
